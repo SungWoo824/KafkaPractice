@@ -18,7 +18,7 @@ public class ConsumerRebalanceListener {
         configs.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG,false);
 
         Consumer consumer = new KafkaConsumer<>(configs);
-        consumer.subscribe(Arrays.asList(TOPIC_NAME), new RebalanceListener());
+//        consumer.subscribe(Arrays.asList(TOPIC_NAME), new RebalanceListener());
     }
 
     private static class RebalanceListener implements org.apache.kafka.clients.consumer.ConsumerRebalanceListener{
@@ -30,7 +30,7 @@ public class ConsumerRebalanceListener {
         @Override
         public void onPartitionsAssigned(Collection<TopicPartition> partitions) {
             logger.warn("Partitions are revoked");
-            consumer.commitSync(currentOffsets);
+//            consumer.commitSync(currentOffsets);
         }
     }
 }
